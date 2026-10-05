@@ -1,6 +1,6 @@
 # Competition source publication checks
 
-User-authorized destination: https://github.com/dengyier/OpenWorkProof-Settlement, a new public repository under `dengyier`. This records the publication candidate prepared on October 5, 2026, not final contest submission, production readiness or an independent security audit.
+User-authorized destination: https://github.com/dengyier/OpenWorkProof-Settlement, a new public repository under `dengyier`. The initial source commit `13e2d587983ac0d2f6ca452377674a2576666539` was pushed to `main` on October 5, 2026. GitHub reported `isPrivate=false`, default branch `main`; remote branch SHA matched the local commit. The authenticated contest form recognized the repository as public, and saved its URL plus the prior-work/trust-limit context. This is source publication for review, not final contest submission, production readiness or an independent security audit.
 
 ## Included scope
 
@@ -19,7 +19,7 @@ No private files were deleted or credentials rotated. The code does generate pri
 
 Before the initial commit, a local-only scanner examined the exact staged Git blobs, forbidden paths and symlink modes. It compared them with the local configured API credential and public encodings of 72 local private-key files (307 distinct secret representations), without printing any values. Additional patterns checked private-key PEM blocks, provider/GitHub/AWS credentials, credential-bearing URLs, literal private credentials and Solana 64-byte key arrays.
 
-No candidate secret match remained. One flagged string in `tests/worker.test.cjs` was manually confirmed as an explicit dummy value in a test that replaces the network fetch function; only that exact fixture was allowed. This is a bounded publication preflight, not a guarantee against every possible secret format, encrypted payload or visual disclosure. The final video was previously visually reviewed and its raw private production material is excluded.
+The initial commit contains 68 explicitly selected files. No candidate secret match remained. One flagged string in `tests/worker.test.cjs` was manually confirmed as an explicit dummy value in a test that replaces the network fetch function; only that exact fixture was allowed. This is a bounded publication preflight, not a guarantee against every possible secret format, encrypted payload or visual disclosure. The final video was previously visually reviewed and its raw private production material is excluded.
 
 ## Fresh checks of this source candidate
 

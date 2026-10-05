@@ -1,0 +1,4 @@
+# Core 1.4.0 baseline; never install the dirty upstream checkout editable.
+openworkproof @ git+https://github.com/dengyier/OpenWorkProof.git@0dbc32b648f31343a5f9ccabf678f1e1075e60f1
+# Version recorded in that revision's requirements-lock.txt.
+pytest==9.1.1

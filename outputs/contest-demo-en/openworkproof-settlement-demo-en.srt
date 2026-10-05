@@ -1,0 +1,127 @@
+1
+00:00:00,581 --> 00:00:05,137
+An agent saying done is not the same as a customer accepting the work.
+
+2
+00:00:05,567 --> 00:00:12,987
+Open Work Proof Settlement connects a bounded task, signed delivery evidence, and a separate decision to release
+
+3
+00:00:13,000 --> 00:00:13,605
+escrow.
+
+4
+00:00:14,035 --> 00:00:18,806
+This demonstration uses Solana Devnet and DemoUSD test tokens.
+
+5
+00:00:20,804 --> 00:00:24,312
+Start with a small coding task: fix an arithmetic mean.
+
+6
+00:00:24,742 --> 00:00:30,615
+The work order freezes the source revision, permitted file, tests, parties, and budget.
+
+7
+00:00:31,059 --> 00:00:35,293
+The customer funds one DemoUSD before execution.
+
+8
+00:00:37,266 --> 00:00:41,083
+In the first recorded case, DeepSeek proposed the fix.
+
+9
+00:00:41,527 --> 00:00:49,148
+Open Work Proof protected the read and patch operations, and Docker verification checked the immutable tests.
+
+10
+00:00:49,605 --> 00:00:56,500
+The customer can inspect the actual change and signed evidence, instead of relying on a chat message saying
+
+11
+00:00:56,500 --> 00:00:57,642
+the job is finished.
+
+12
+00:00:59,636 --> 00:01:02,162
+Passing tests does not move the tokens.
+
+13
+00:01:02,619 --> 00:01:06,558
+The customer reviews the delivery and signs an acceptance message.
+
+14
+00:01:07,001 --> 00:01:11,074
+That signature records a decision; it is not a payment transaction.
+
+15
+00:01:13,037 --> 00:01:17,889
+Release is a second wallet approval, co-signed by the designated attester.
+
+16
+00:01:18,346 --> 00:01:25,725
+The finalized transaction transferred exactly one DemoUSD to the provider and left the vault empty.
+
+17
+00:01:26,155 --> 00:01:28,709
+Only then did the application show settled.
+
+18
+00:01:30,812 --> 00:01:36,497
+Now look at a separate order, using a clearly labelled reference patch, not another model call.
+
+19
+00:01:36,941 --> 00:01:40,691
+Verification passed, but the customer rejected the delivery.
+
+20
+00:01:41,107 --> 00:01:43,889
+A separate transaction recorded the dispute.
+
+21
+00:01:44,320 --> 00:01:47,532
+Release was blocked, and the token stayed in escrow.
+
+22
+00:01:47,962 --> 00:01:50,879
+Rejection alone did not automatically refund it.
+
+23
+00:01:52,880 --> 00:01:58,861
+The demo provider then consented to cancellation, and the customer co-signed the refund.
+
+24
+00:01:59,318 --> 00:02:05,500
+The finalized transaction returned exactly one DemoUSD to the original customer.
+
+25
+00:02:05,944 --> 00:02:10,420
+The vault became empty, and the provider's balance did not increase.
+
+26
+00:02:10,850 --> 00:02:15,138
+Terminal guards also refused another refund or release.
+
+27
+00:02:17,145 --> 00:02:18,193
+The boundaries matter.
+
+28
+00:02:18,623 --> 00:02:25,545
+The chain enforces permissions and transfers; a trusted application attester checks the evidence.
+
+29
+00:02:25,976 --> 00:02:33,220
+Noncustomer roles are app-owned, the program is upgradeable, and there is no automatic arbitration or real-money
+
+30
+00:02:33,220 --> 00:02:33,610
+claim.
+
+31
+00:02:34,040 --> 00:02:40,559
+Open Work Proof Core predates this competition; this entry adds the settlement integration.
+
+32
+00:02:41,002 --> 00:02:46,540
+Verification, acceptance, and settlement remain three distinct events.

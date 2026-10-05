@@ -1,0 +1,22 @@
+{
+  "name": "openworkproof-settlement",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Devnet-only verifiable agent delivery escrow prototype",
+  "scripts": {
+    "test:escrow": "node --test tests/escrow.test.cjs",
+    "test:local": "bash scripts/test-local.sh",
+    "test:app": "node --test tests/app_security.test.cjs tests/chain_client.test.cjs tests/rpc.test.cjs tests/worker.test.cjs tests/wallet_ui.test.cjs",
+    "start": "node app/server.cjs",
+    "test:devnet": "node scripts/check-devnet-delivery.cjs"
+  },
+  "devDependencies": {
+    "@solana/spl-token": "0.4.14",
+    "@solana/web3.js": "1.99.0"
+  },
+  "dependencies": {
+    "bs58": "4.0.1",
+    "https-proxy-agent": "7.0.6",
+    "node-fetch": "2.7.0"
+  }
+}

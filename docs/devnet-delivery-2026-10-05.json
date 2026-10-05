@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-10-04T18:35:28.091Z",
+  "network": "devnet",
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "program": "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk",
+  "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+  "customer": "2WwJskcYAGngNURoa9jcDuxiLj5WHvQTcpJYgVxLc4jh",
+  "role_boundary": "operator-generated software customer; not browser approval, independent customer, or live model",
+  "worker": {
+    "mode": "reference",
+    "model": null,
+    "live_model": false
+  },
+  "job_id": "178b72c6c2a9073ca1412601e2ea96cd3f3d92d4a381d242115d87a565014b21",
+  "work_order_digest": "ac7324c6690b4bd1268b28b28498a7493d2d5a3f6dbc02135b8f6d7ed004bfe1",
+  "bundle_digest": "e88113f4855b98ba74e7d4cb601b6faf1238b7aa5f41c177a227d357e0337b05",
+  "acceptance_digest": "47a548470b81be15813476f3fb50bfd3896702d8f22348339bb5913ff09d5bed",
+  "chain": {
+    "customer": "2WwJskcYAGngNURoa9jcDuxiLj5WHvQTcpJYgVxLc4jh",
+    "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+    "verifier": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+    "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+    "job_id": "178b72c6c2a9073ca1412601e2ea96cd3f3d92d4a381d242115d87a565014b21",
+    "work_order_digest": "ac7324c6690b4bd1268b28b28498a7493d2d5a3f6dbc02135b8f6d7ed004bfe1",
+    "bundle_digest": "e88113f4855b98ba74e7d4cb601b6faf1238b7aa5f41c177a227d357e0337b05",
+    "acceptance_digest": "47a548470b81be15813476f3fb50bfd3896702d8f22348339bb5913ff09d5bed",
+    "amount": "1000000",
+    "deadline": "1791142018",
+    "status": "Settled",
+    "bump": 254,
+    "order": "2RGgz6KRAq56UfvAuWv9YhRWejgZBuqUqg1syWbhwbnV",
+    "vault": "ApvRbSnbYzQ5V3L4byvdxNR2yqcE22A9sQ1U9H6oAW74",
+    "vault_balance": "0",
+    "provider_balance": "1000000"
+  },
+  "transactions": [
+    {
+      "kind": "fund",
+      "signature": "xppwGMewVuhiULT19cjJtoyuZ6s3tXBvfv3JNXbUpYMSXGAw21FbRuinq7sTL72Tffr7bAnwvk3JjJRk6yJZKWV",
+      "finalized": true,
+      "reconciled": true
+    },
+    {
+      "kind": "submit",
+      "signature": "3e4pR6iCdUfg3xtaAWfoz2LdzUci88btm5UH1aefS1qDnk2XrsrZwsMyhovuwvSWsiDaFfa8fQjTXASNQzD8dfiV",
+      "finalized": true,
+      "reconciled": true
+    },
+    {
+      "kind": "release",
+      "signature": "rujxJzg5PQKu2GFcPzsbx4pjfFKezxymWTz6LiN4nGvzUH7s9MWjc75c9SUHQGpiVEeVbnGBa5kWJfLfBaxwcYF",
+      "finalized": true,
+      "reconciled": true
+    }
+  ]
+}

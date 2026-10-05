@@ -1,0 +1,211 @@
+{
+  "verified_at": "2026-10-04T21:04:02.296Z",
+  "network": "devnet",
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "token": "DemoUSD",
+  "decimals": 6,
+  "original_screen_recording": true,
+  "published": false,
+  "trust_boundary": "App-owned provider and attester; upgradeable program; test tokens only; no arbitration or real-payment claim.",
+  "cases": [
+    {
+      "label": "A",
+      "id": "2f88f90a80f237505ac44991c38c590c",
+      "mode": {
+        "mode": "deepseek",
+        "live_model": true,
+        "model": "deepseek-flash",
+        "patch_sha256": "f914bdb19219e4f5c588bfdacab1d2f03475cd1ee30914749d36babc7da13bf3",
+        "request_sha256": "e5b0d1c72c021d89b1fe1471ac9f0cf25e5ea14e584ed557c1e763d474d8a1a5",
+        "response_sha256": "f02226a8965ea19a4be306e92c20db59aae27c4231cbd0cc1856f7308e5028b5"
+      },
+      "native_verification": "VERIFIED",
+      "native_decision": "ACCEPTED",
+      "terms": {
+        "network": "devnet",
+        "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+        "program": "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk",
+        "customer": "5kvYUz9h8Zhdvvd4iSaXWV8iDxapN7X2YUxsZJrapSJH",
+        "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+        "verifier": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+        "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+        "amount": "1000000",
+        "deadline": "1791149965",
+        "job_id": "c4a20b142386bfbf7c246fb515c1822915066a70e3598ee8eef27c80748faebf",
+        "work_order_digest": "c4cadda6909be751f819c382e26e56cf836f185980207b6a28c44ccd51fa2baa",
+        "bundle_digest": "a0f0478a23ea688de45fec796e3006ea1ad99754dc1a5776c3bd8c7a793f1ef9",
+        "acceptance_digest": "294d22bc33cea2063991f161ec3d00261011e6d7b86212fb799d477f6a39535f"
+      },
+      "onchain": {
+        "customer": "5kvYUz9h8Zhdvvd4iSaXWV8iDxapN7X2YUxsZJrapSJH",
+        "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+        "verifier": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+        "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+        "job_id": "c4a20b142386bfbf7c246fb515c1822915066a70e3598ee8eef27c80748faebf",
+        "work_order_digest": "c4cadda6909be751f819c382e26e56cf836f185980207b6a28c44ccd51fa2baa",
+        "bundle_digest": "a0f0478a23ea688de45fec796e3006ea1ad99754dc1a5776c3bd8c7a793f1ef9",
+        "acceptance_digest": "294d22bc33cea2063991f161ec3d00261011e6d7b86212fb799d477f6a39535f",
+        "amount": "1000000",
+        "deadline": "1791149965",
+        "status": "Settled",
+        "bump": 255,
+        "order": "3t8NcYXw1D4iJUQevGivAz6Zr6xmi6PZuj4ByXCrrkNY",
+        "vault": "QnpxkqEMxg9Y6x11AWNBmzYzwLx9ktvvg2k1Y6gE6kh",
+        "vault_balance": "0",
+        "provider_balance": "5000000"
+      },
+      "native_terminal_digest": "294d22bc33cea2063991f161ec3d00261011e6d7b86212fb799d477f6a39535f",
+      "terminal_slot": 507490961,
+      "terminal_fee_lamports": 10000,
+      "terminal_transfer": {
+        "recipient": {
+          "pre": "4000000",
+          "post": "5000000"
+        },
+        "vault": {
+          "pre": "1000000",
+          "post": "0"
+        }
+      },
+      "guards": [],
+      "transactions": [
+        {
+          "kind": "fund",
+          "signature": "DAgiGQ7HwthtoRaYtbDpawrqudBaMEXoiJkRfJMSa8XL3KDDSMBg2w15JqSY7gmQJGf5LgxeVYwvQaiRYYSSR5k",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/DAgiGQ7HwthtoRaYtbDpawrqudBaMEXoiJkRfJMSa8XL3KDDSMBg2w15JqSY7gmQJGf5LgxeVYwvQaiRYYSSR5k?cluster=devnet"
+        },
+        {
+          "kind": "submit",
+          "signature": "5Rq1iYfHdJZi6dUtXfNxxjKBKm1rz61E9GhnnsPPpNrDTuYWwrnCSi2mxM2A15jiNgVgqjG8UQAPKFUTVmtzJqmq",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/5Rq1iYfHdJZi6dUtXfNxxjKBKm1rz61E9GhnnsPPpNrDTuYWwrnCSi2mxM2A15jiNgVgqjG8UQAPKFUTVmtzJqmq?cluster=devnet"
+        },
+        {
+          "kind": "release",
+          "signature": "4s5JwD3XqwLiE991TgEmJGe8Eo5cRCLVQgTvQ3DwJo3onVMqWRjrCYyy7axvJHQCubyr1gDSLNCiMd3aDpL6vNuG",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/4s5JwD3XqwLiE991TgEmJGe8Eo5cRCLVQgTvQ3DwJo3onVMqWRjrCYyy7axvJHQCubyr1gDSLNCiMd3aDpL6vNuG?cluster=devnet"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "id": "4425870c502015b0714410c9a5a6e761",
+      "mode": {
+        "mode": "reference",
+        "live_model": false,
+        "patch_sha256": "388bbf662088945a0f1af5c57e94afad97d444b6a2b22f60154afb058586c97e"
+      },
+      "native_verification": "VERIFIED",
+      "native_decision": "REJECTED",
+      "terms": {
+        "network": "devnet",
+        "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+        "program": "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk",
+        "customer": "5kvYUz9h8Zhdvvd4iSaXWV8iDxapN7X2YUxsZJrapSJH",
+        "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+        "verifier": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+        "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+        "amount": "1000000",
+        "deadline": "1791150338",
+        "job_id": "ee8e7883fef974f0d93505b749e459a683c95647888361a2d106596a16af055d",
+        "work_order_digest": "085fc1117856641f975df137808cdfe292da22bee189fafc9cf54dc687835637",
+        "bundle_digest": "db1f5229539b3975d2de371810408bc57e5207d179fec36ea7bcfdbe55571f53",
+        "acceptance_digest": "205a458d496d60ab3b78e14be72f749d3b210a9648956279b1e78de90d2b8ffa"
+      },
+      "onchain": {
+        "customer": "5kvYUz9h8Zhdvvd4iSaXWV8iDxapN7X2YUxsZJrapSJH",
+        "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+        "verifier": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+        "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+        "job_id": "ee8e7883fef974f0d93505b749e459a683c95647888361a2d106596a16af055d",
+        "work_order_digest": "085fc1117856641f975df137808cdfe292da22bee189fafc9cf54dc687835637",
+        "bundle_digest": "db1f5229539b3975d2de371810408bc57e5207d179fec36ea7bcfdbe55571f53",
+        "acceptance_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+        "amount": "1000000",
+        "deadline": "1791150338",
+        "status": "Refunded",
+        "bump": 255,
+        "order": "4tg44AwK713dcPZgWB83kM1SKvjVp8UTNij2hhAVc5hb",
+        "vault": "5Lqtc8i4kAkmLJzFgczPZZCfENovn5HRs53kk7EYnTCL",
+        "vault_balance": "0",
+        "provider_balance": "5000000"
+      },
+      "native_terminal_digest": "205a458d496d60ab3b78e14be72f749d3b210a9648956279b1e78de90d2b8ffa",
+      "terminal_slot": 507493503,
+      "terminal_fee_lamports": 10000,
+      "terminal_transfer": {
+        "recipient": {
+          "pre": "1000000",
+          "post": "2000000"
+        },
+        "vault": {
+          "pre": "1000000",
+          "post": "0"
+        }
+      },
+      "guards": [
+        {
+          "name": "repeat-refund",
+          "method": "readonly simulation, sigVerify=false, not broadcast",
+          "error": {
+            "InstructionError": [
+              2,
+              {
+                "Custom": 6003
+              }
+            ]
+          },
+          "error_code": "InvalidState"
+        },
+        {
+          "name": "release-after-refund",
+          "method": "readonly simulation, sigVerify=false, not broadcast",
+          "error": {
+            "InstructionError": [
+              2,
+              {
+                "Custom": 6003
+              }
+            ]
+          },
+          "error_code": "InvalidState"
+        }
+      ],
+      "transactions": [
+        {
+          "kind": "fund",
+          "signature": "4suGXtGsnJuUtbAPMizuWw2q7KzjTmAp8jNnYtTeL1iErLGrAbULJDkojNwmCRHYF6zjezh9JPeaiSMzTwb7Giyc",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/4suGXtGsnJuUtbAPMizuWw2q7KzjTmAp8jNnYtTeL1iErLGrAbULJDkojNwmCRHYF6zjezh9JPeaiSMzTwb7Giyc?cluster=devnet"
+        },
+        {
+          "kind": "submit",
+          "signature": "3F9UiP8ykkBkVtTJC6knznm6a6i4HNWiNvAtCdCBbHe15AExfFBpWeTaQEfyrwRjT6HHnLHUutBwrRdCVSy7kiuZ",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/3F9UiP8ykkBkVtTJC6knznm6a6i4HNWiNvAtCdCBbHe15AExfFBpWeTaQEfyrwRjT6HHnLHUutBwrRdCVSy7kiuZ?cluster=devnet"
+        },
+        {
+          "kind": "reject",
+          "signature": "2ecnQu96jS1nxo5jxppBFQ3YEYVyvg7TkzCqYdLwuVBHyBa5AdrVjXpHma2xs8MLdUwx9YTNdwua1PLkTY4iCz1U",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/2ecnQu96jS1nxo5jxppBFQ3YEYVyvg7TkzCqYdLwuVBHyBa5AdrVjXpHma2xs8MLdUwx9YTNdwua1PLkTY4iCz1U?cluster=devnet"
+        },
+        {
+          "kind": "mutual-refund",
+          "signature": "28DE2semp8aVjCMzEhtBnhME5U2sbkqBxhhed5Edmeck9Utk1MR7FkuRUBkkbapu7ZY3pSxHwBoFPS1BxqWY1Exq",
+          "finalized": true,
+          "reconciled": true,
+          "url": "https://explorer.solana.com/tx/28DE2semp8aVjCMzEhtBnhME5U2sbkqBxhhed5Edmeck9Utk1MR7FkuRUBkkbapu7ZY3pSxHwBoFPS1BxqWY1Exq?cluster=devnet"
+        }
+      ]
+    }
+  ]
+}

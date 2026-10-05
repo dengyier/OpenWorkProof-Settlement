@@ -1,0 +1,15 @@
+[toolchain]
+anchor_version = "1.2.0"
+
+[programs.localnet]
+owp_settlement = "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk"
+
+[programs.devnet]
+owp_settlement = "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk"
+
+[provider]
+cluster = "Localnet"
+wallet = ".tools/local-wallet-keypair.json"
+
+[scripts]
+test = "npm run test:escrow"

@@ -1,0 +1,86 @@
+{
+  "prepared_date": "2026-10-05",
+  "timezone": "Asia/Shanghai",
+  "artifact_status": "script_and_evidence_only_no_final_video",
+  "network": "devnet",
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "program": "2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk",
+  "mint": "6MvanYas3fgdGwF2hY4QjQuTnjvH8phFkRmupwF9hJ4u",
+  "token": "DemoUSD",
+  "decimals": 6,
+  "amount_raw": "1000000",
+  "customer": "5kvYUz9h8Zhdvvd4iSaXWV8iDxapN7X2YUxsZJrapSJH",
+  "provider": "7BnAfGkZibEZvrekkTWGj9GYP6j5dX9V6vae1JfUsDiz",
+  "attester": "9anNPMmJpkHjeizcTEovxoYMaUHm5UDnvxPCo5zn6Csn",
+  "constraints": {
+    "test_tokens_only": true,
+    "trusted_application_attester": true,
+    "noncustomer_roles_app_owned": true,
+    "developer_controlled_upgrade_authority": true,
+    "independent_arbitration": false,
+    "real_payment_claim": false,
+    "original_continuous_recording_available": false,
+    "settlement_source_public_url": null,
+    "final_video_url": null
+  },
+  "cases": [
+    {
+      "label": "Order A — accepted delivery and release",
+      "id": "287edefe1abe5162715eab319f05af35",
+      "mode": "live_deepseek_proposal",
+      "model_attribution": "app_operator_signed_not_model_provider_signed",
+      "native_decision": "ACCEPTED",
+      "chain_state": "Settled",
+      "order": "BvrgQ5btW1bBbhkXqvPzEvAYY9wQshBW8buKB5aCMJGx",
+      "vault": "FGhH6DCNxi8ufw3HuJi9WuacAXNfGkbc9udutBHDTrGW",
+      "vault_balance_raw": "0",
+      "terminal_destination": "provider",
+      "terminal_destination_delta_raw": "1000000",
+      "terminal_vault_delta_raw": "-1000000",
+      "work_order_digest": "f065ceb079bd18b0d0a99d00f96839c51ea045dd96f60fd83bc30ffea8dc78db",
+      "bundle_digest": "0d2577703e05ff7dac801d1fc87251a4059362cb2b28e29db24dbbfb91abf472",
+      "native_terminal_digest": "6ce070dabf0213ac036be30e38b25d01a6960668d9c7a2850597773eea102796",
+      "terminal_slot": 507476658,
+      "terminal_fee_lamports": 10000,
+      "source_record": "docs/devnet-phantom-2026-10-05.md",
+      "transactions": [
+        {"kind": "fund", "signature": "3u7YcZVcTgPGSJoSUEZK8L8JizbsGWhcznvo1GTczBkVwPdtgaFH7yZRibNbnz9hnJGxPo8bCuvW7P5xFqwHFfMw"},
+        {"kind": "submit", "signature": "5ojgS5nVoVqGPLBe3njC78teop7AbULTYT2gMjP7RyRszxo4rTrTb8v9y4h3vXE6r1doZqyJLQ4NUdkAhvGN5sZq"},
+        {"kind": "release", "signature": "4SJy3g1DZCuPy5VqX9iE2Hzgn8a74GzqKhG8c7Ri7ijtnEwAshpFmm9Bw7uQNsaNSGQ5TDANJHDPkmh4twE8CJiG", "url": "https://explorer.solana.com/tx/4SJy3g1DZCuPy5VqX9iE2Hzgn8a74GzqKhG8c7Ri7ijtnEwAshpFmm9Bw7uQNsaNSGQ5TDANJHDPkmh4twE8CJiG?cluster=devnet"}
+      ]
+    },
+    {
+      "label": "Order B — rejection, dispute and mutual refund",
+      "id": "f97ebf41851968618472a7ec1a265b0c",
+      "mode": "reference_patch_no_llm",
+      "native_decision": "REJECTED",
+      "chain_state": "Refunded",
+      "order": "6nGAmxqAzUij9gnPS4nN6pVC534gfu9S5zD2mfA1PnTu",
+      "vault": "Atoks8n5jyJP581ZLoV2w3uu1dgd8eGtKvdZ1HaesKxv",
+      "vault_balance_raw": "0",
+      "terminal_destination": "original_customer",
+      "terminal_destination_delta_raw": "1000000",
+      "terminal_vault_delta_raw": "-1000000",
+      "provider_delta_raw": "0",
+      "work_order_digest": "141ee1e39447517d0cbc428be9e4711622d8cc566bd78c75aa88ccd3c19ecb79",
+      "bundle_digest": "d486dce4860f2be0a548a7b71ee6384e759a8c129390cb5c7199fcd0f4fb777d",
+      "native_terminal_digest": "1f43130d5ea3df41a9874086d16ed538f82a33dc17d3841dc4a047bca5816fe6",
+      "onchain_acceptance_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "terminal_slot": 507486524,
+      "terminal_fee_lamports": 10000,
+      "source_record": "docs/devnet-wallet-refund-2026-10-05.md",
+      "transactions": [
+        {"kind": "fund", "signature": "iiEDeG9vWgbRSekC8LpG9APXXUvqE85zdb3n5xiEHnpEfEKEZ4aoM6hN4rjM4oXiCZLTwRwvbPSooweh5srENWe"},
+        {"kind": "submit", "signature": "2Seat2KMmuTZGrr9NZsU2dic693vFQQopwxsgDbPs4LvvQBm7KsRE9wa6xDR5RhyJR2JfuYAZNWehvNJyGes8Qat"},
+        {"kind": "reject", "signature": "38VWpSwsPsUFibpwi3nyQFPCCjrDZuRDchCKPttqLmiEodeoCfdd2ys9LLaku6HVqq8dJvtxRxwKiNGfFrVYaiR2"},
+        {"kind": "mutual-refund", "signature": "3mEhJetATWn6MQwGNP2PfQsEMe6rtgyw4BhLhUisCPaS6sqc1nfZhDa9zZdQ2iFiUmNQxjMjvz72Rysv5TMjdN92", "url": "https://explorer.solana.com/tx/3mEhJetATWn6MQwGNP2PfQsEMe6rtgyw4BhLhUisCPaS6sqc1nfZhDa9zZdQ2iFiUmNQxjMjvz72Rysv5TMjdN92?cluster=devnet"}
+      ],
+      "excluded_expired_funding": {
+        "signature": "54Tk9a76uLUejnZttoATEdwzgT793T4SxSnwxNfoAztjDLjuRK8wY7RU4xdoWZdBgXFy9hRLsjTQTfprKrU3345a",
+        "finalized": false,
+        "reason": "expired without finalized inclusion"
+      },
+      "terminal_guard_evidence": "API refusals and readonly Devnet simulation with sigVerify=false; not broadcast failed transfers"
+    }
+  ]
+}

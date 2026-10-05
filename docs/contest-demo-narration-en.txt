@@ -1,0 +1,15 @@
+An agent saying “done” is not the same as a customer accepting the work. Open Work Proof Settlement connects a bounded task, signed delivery evidence, and a separate decision to release escrow. This demonstration uses Solana Devnet and DemoUSD test tokens.
+
+Start with a small coding task: fix an arithmetic mean. The work order freezes the source revision, permitted file, tests, parties, and budget. The customer funds one DemoUSD before execution.
+
+In the first recorded case, DeepSeek proposed the fix. Open Work Proof protected the read and patch operations, and Docker verification checked the immutable tests. The customer can inspect the actual change and signed evidence, instead of relying on a chat message saying the job is finished.
+
+Passing tests does not move the tokens. The customer reviews the delivery and signs an acceptance message. That signature records a decision; it is not a payment transaction.
+
+Release is a second wallet approval, co-signed by the designated attester. The finalized transaction transferred exactly one DemoUSD to the provider and left the vault empty. Only then did the application show “settled.”
+
+Now look at a separate order, using a clearly labelled reference patch, not another model call. Verification passed, but the customer rejected the delivery. A separate transaction recorded the dispute. Release was blocked, and the token stayed in escrow. Rejection alone did not automatically refund it.
+
+The demo provider then consented to cancellation, and the customer co-signed the refund. The finalized transaction returned exactly one DemoUSD to the original customer. The vault became empty, and the provider's balance did not increase. Terminal guards also refused another refund or release.
+
+The boundaries matter. The chain enforces permissions and transfers; a trusted application attester checks the evidence. Noncustomer roles are app-owned, the program is upgradeable, and there is no automatic arbitration or real-money claim. Open Work Proof Core predates this competition; this entry adds the settlement integration. Verification, acceptance, and settlement remain three distinct events.

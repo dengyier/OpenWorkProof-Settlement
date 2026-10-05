@@ -1,0 +1,61 @@
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
+const { Keypair, PublicKey, Transaction, ComputeBudgetInstruction, ComputeBudgetProgram } = require('@solana/web3.js');
+const { decodeOrder, deriveOrder, releaseInstruction, refundInstruction, assertSafeNetwork, PROGRAM_ID } = require('../app/chain.cjs');
+const { createHash } = require('node:crypto');
+const digest = () => Buffer.alloc(32, 7).toString('hex');
+test('wallet preparation freezes fees before signing and still rejects wallet fee changes', async () => {
+  const customer = Keypair.generate(), verifier = Keypair.generate();
+  const terms = { customer: customer.publicKey.toBase58(), verifier: verifier.publicKey.toBase58(), provider: Keypair.generate().publicKey.toBase58(), mint: Keypair.generate().publicKey.toBase58(), job_id: digest(), work_order_digest: digest(), bundle_digest: digest(), acceptance_digest: digest() };
+  const block = { blockhash: Keypair.generate().publicKey.toBase58(), lastValidBlockHeight: 123 };
+  const { tx } = await require('../app/chain.cjs').transaction({ getLatestBlockhash: async () => block }, releaseInstruction(terms), customer.publicKey);
+  const budget = tx.instructions.filter(i => i.programId.equals(ComputeBudgetProgram.programId));
+  assert.equal(budget.length, 2, 'unsigned Phantom requests must already specify budget and priority price');
+  assert.equal(ComputeBudgetInstruction.decodeSetComputeUnitLimit(budget[0]).units, 200000);
+  assert.equal(ComputeBudgetInstruction.decodeSetComputeUnitPrice(budget[1]).microLamports, 0n);
+  tx.partialSign(verifier);
+  const prepared = tx.serialize({ requireAllSignatures: false }).toString('base64');
+  const returned = Transaction.from(Buffer.from(prepared, 'base64'));
+  returned.partialSign(customer);
+  const { validateSignedTransaction } = require('../app/security.cjs');
+  assert(validateSignedTransaction(prepared, returned.serialize().toString('base64')).verifySignatures());
+  returned.instructions[1] = ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 1 });
+  returned.partialSign(verifier, customer);
+  assert.throws(() => validateSignedTransaction(prepared, returned.serialize().toString('base64')), /changed/);
+});
+test('order decoder binds account owner, discriminator and frozen terms', () => {
+  const roles = [Keypair.generate(), Keypair.generate(), Keypair.generate(), Keypair.generate()];
+  const data = Buffer.alloc(282);
+  createHash('sha256').update('account:Order').digest().copy(data, 0, 0, 8);
+  roles.forEach((r, i) => r.publicKey.toBuffer().copy(data, 8 + i * 32));
+  data.writeBigUInt64LE(123n, 264); data.writeBigInt64LE(999n, 272); data[280] = 1;
+  const result = decodeOrder({ owner: new PublicKey(PROGRAM_ID), data });
+  assert.equal(result.amount, '123'); assert.equal(result.status, 'Delivered');
+  assert.equal(result.customer, roles[0].publicKey.toBase58());
+  assert.throws(() => decodeOrder({ owner: roles[0].publicKey, data }), /owner/);
+  data[0] ^= 1;
+  assert.throws(() => decodeOrder({ owner: new PublicKey(PROGRAM_ID), data }), /discriminator/);
+});
+test('expired refund is customer-only; delivered refund requires provider consent and returns to customer ATA', () => {
+  const terms = { customer: Keypair.generate().publicKey.toBase58(), provider: Keypair.generate().publicKey.toBase58(), mint: Keypair.generate().publicKey.toBase58(), job_id: digest() };
+  const expired = refundInstruction(terms, false), mutual = refundInstruction(terms, true);
+  assert.equal(expired.keys.filter(k => k.isSigner).length, 1);
+  assert.deepEqual(mutual.keys.filter(k => k.isSigner).map(k => k.pubkey.toBase58()), [terms.customer, terms.provider]);
+  assert(mutual.keys[5].pubkey.equals(require('../app/chain.cjs').accounts(terms).source));
+});
+test('release requires exactly customer/verifier and binds real evidence hashes', () => {
+  const [customer, verifier, mint, provider] = Array.from({ length: 4 }, () => Keypair.generate().publicKey.toBase58());
+  const terms = { customer, verifier, provider, mint, job_id: digest(), work_order_digest: digest(), bundle_digest: digest(), acceptance_digest: digest() };
+  const ix = releaseInstruction(terms);
+  assert.deepEqual(ix.keys.filter(k => k.isSigner).map(k => k.pubkey.toBase58()), [customer, verifier]);
+  assert.equal(ix.programId.toBase58(), PROGRAM_ID);
+  assert(ix.keys[2].pubkey.equals(deriveOrder(customer, digest()).order));
+  assert.equal(ix.data.length, 104);
+  assert.throws(() => releaseInstruction({ ...terms, acceptance_digest: '0'.repeat(64) }), /digest/);
+});
+test('public mainnet/testnet or mislabeled genesis is refused', async () => {
+  await assert.rejects(assertSafeNetwork({ getGenesisHash: async () => 'mainnet' }, 'devnet'), /genesis/);
+  assert.equal(await assertSafeNetwork({ getGenesisHash: async () => 'EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG' }, 'devnet'), 'EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG');
+  await assert.rejects(assertSafeNetwork({}, 'mainnet'), /network/);
+  await assert.rejects(assertSafeNetwork({ rpcEndpoint: 'http://127.0.0.1:18899', getGenesisHash: async () => '5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d' }, 'localnet'), /genesis/);
+});

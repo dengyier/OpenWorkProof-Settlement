@@ -2,6 +2,7 @@
 name = "owp-settlement"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 description = "Local test-token escrow for OWP-backed delivery"
 
 [lib]

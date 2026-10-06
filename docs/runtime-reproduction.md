@@ -57,7 +57,7 @@ With those environment variables loaded, `bash scripts/start-devnet.sh` uses the
 
 Payloads over 1 MiB are downloaded in bounded byte ranges, using the same strategy as this repository's toolchain downloader. Each range must have the requested length; the assembled payload must match both the published size and the frozen SHA-256. Read-only HTTPS requests have at most two retries; certificate validation remains enabled.
 
-The source pin contains an Apache-2.0 license for Core. The Settlement repository's own licensing decision is separate; dependency licenses remain their respective owners' terms. The historical demo images were built from an earlier source revision and are not relabeled as this rebuild.
+The source pin contains an Apache-2.0 license for Core. Original Settlement code and documentation use [MIT](../LICENSE); this does not replace Core's or other dependencies' licenses. Retain the relevant licenses and attribution notices when redistributing their code or images containing it. The historical demo images were built from an earlier source revision and are not relabeled as this rebuild.
 
 This is a recipe for equivalent, inspectable runtime behavior, **not a promise of bit-identical image digests across Docker versions**. New work orders freeze the rebuilt digests. Old evidence keeps its original frozen digests; a new image cannot retroactively validate an old case. Keep original images if you need to replay historical evidence.
 

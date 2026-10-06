@@ -72,7 +72,9 @@ Program `2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk` is deployed on **Devnet o
 
 ## Licensing
 
-Settlement does not yet include its own `LICENSE` file; project-owner confirmation is pending. The pinned OpenWorkProof Core source includes Apache-2.0. Dependencies retain their respective licenses; public source availability and licensing status are separate from contest submission.
+Original Settlement source code and accompanying documentation are licensed under [MIT](LICENSE), as approved by the project owner on October 6, 2026. Copyright attribution is to OpenWorkProof Settlement contributors.
+
+OpenWorkProof Core remains [Apache-2.0](https://github.com/dengyier/OpenWorkProof/blob/0dbc32b648f31343a5f9ccabf678f1e1075e60f1/LICENSE). Dependencies and third-party materials retain their respective licenses; the root MIT license does not relicense them or grant rights to third-party trademarks or demo-media assets. If redistributing Core or images containing it, retain its license and applicable attribution notices. Licensing does not establish security certification or production readiness.
 
 ## Research documents
 

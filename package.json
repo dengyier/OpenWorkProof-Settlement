@@ -2,6 +2,7 @@
   "name": "openworkproof-settlement",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Devnet-only verifiable agent delivery escrow prototype",
   "scripts": {
     "test:escrow": "node --test tests/escrow.test.cjs",

@@ -20,7 +20,12 @@ contain the exact `FIXED_TEST_SOURCE` bytes. Its actual immutable reference is
 required in `OWP_VERIFIER_IMAGE`; the real helper reference is required in
 `OWP_HELPER_IMAGE`.
 
-Build the fixture image from `runtime/Dockerfile`. The base image is an existing
+For a new checkout, use the [public-source rebuild recipe](../docs/runtime-reproduction.md)
+and source its generated `runtime.env` before testing or starting the app.
+It preserves the native runner and constructs both images without private caches.
+
+The following historical command is only for machines that already have the
+old base image. Build the fixture image from `runtime/Dockerfile`. The base image is an existing
 local immutable image; its source provenance is distinct from the Core pin.
 The legacy builder can use that local image without querying a remote registry:
 

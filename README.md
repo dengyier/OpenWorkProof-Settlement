@@ -1,16 +1,18 @@
 # OpenWorkProof Settlement
 
-Research baseline: **2026-10-05**, Asia/Shanghai.
+Research baseline: **2026-10-05**, Asia/Shanghai. Submission status verified: **2026-10-06**.
 
 Competition code-review repository: [dengyier/OpenWorkProof-Settlement](https://github.com/dengyier/OpenWorkProof-Settlement). This is the settlement integration, separate from the pre-existing OWP Core repository. Public source access is not a production release or an independent security audit.
 
 OpenWorkProof Settlement connects verifiable AI-agent delivery and explicit customer acceptance to a funded onchain escrow. OpenWorkProof supplies the work contract and signed evidence; this new application is being developed to manage wallet approval, escrow state and token transfers.
 
-**Status: step-3 Devnet prototype.** Native OWP work orders, protected code execution, Docker verification, exact-byte customer signatures and SPL escrow are connected through a local English delivery-review application. The settlement program is deployed on Devnet. Actual DeepSeek execution and Phantom customer funding, acceptance and release were verified in a bounded test-token delivery; real release-transaction cancellation was also checked. A separate reference-patch case verified actual acceptance-message cancellation, between-prompt account switching, rejection, dispute and an exact 1 DemoUSD mutual refund. In-flight account switching remains automated-only. See the [actual Phantom execution record](docs/devnet-phantom-2026-10-05.md), [wallet-exception and refund record](docs/devnet-wallet-refund-2026-10-05.md) and [earlier step-2 verification](docs/verification-step-2.md). No mainnet, real payment, independent-customer adoption, production release or contest submission is evidenced.
+**Status: submitted for judging; step-3 Devnet prototype.** The [Crypto World's Fair entry](https://colosseum.com/arena/projects/openworkproof-settlement) was formally submitted on **2026-10-06 at 19:18 Asia/Shanghai**. See the [submission record](docs/contest-submission-2026-10-06.md). Submission is not a judging result, award, security certification or production release.
+
+Native OWP work orders, protected code execution, Docker verification, exact-byte customer signatures and SPL escrow are connected through a local English delivery-review application. The settlement program is deployed on Devnet. Actual DeepSeek execution and Phantom customer funding, acceptance and release were verified in a bounded test-token delivery; real release-transaction cancellation was also checked. A separate reference-patch case verified actual acceptance-message cancellation, between-prompt account switching, rejection, dispute and an exact 1 DemoUSD mutual refund. In-flight account switching remains automated-only. See the [actual Phantom execution record](docs/devnet-phantom-2026-10-05.md), [wallet-exception and refund record](docs/devnet-wallet-refund-2026-10-05.md) and [earlier step-2 verification](docs/verification-step-2.md). No mainnet, real payment, independent-customer adoption or production release is evidenced.
 
 ## Open the delivery review application
 
-With Docker running and the existing immutable runtime images installed:
+With Docker running and immutable runtime images installed (new reviewers should first use the [public-source runtime rebuild](docs/runtime-reproduction.md)):
 
 ```sh
 bash scripts/start-devnet.sh
@@ -18,7 +20,7 @@ bash scripts/start-devnet.sh
 
 Open `http://127.0.0.1:3188` in a browser with Phantom, select Devnet and connect your wallet. Freeze a work order, fund 1 DemoUSD, execute the protected reference patch, review actual evidence, sign the native acceptance, then separately authorize release. Your wallet needs Devnet SOL for transaction fees and order rent; do not send real SOL. DemoUSD is minted by this isolated application, not USDC or money. The backend never requests a customer private key.
 
-The default reference proposal is not an LLM. The optional DeepSeek path requires `DEEPSEEK_API_KEY` in a local, ignored `.env` (see `.env.example`); restart the server after configuring it. Requires Node 20.12+. Never put credentials in chat or committed files. The model proposes one file as JSON; local code computes canonical patch hashes, then native OWP execution and immutable tests verify the work. New bundles bind an app-operator-signed API attribution record to customer acceptance; this is not a signature by the model provider or independent verification. See [step 3 contract](docs/implementation-step-3.md), [official API documentation](https://api-docs.deepseek.com/) and [native runtime setup](bridge/delivery_flow_README.md). Existing runtime image references are local-only, not a published reproducible deployment.
+The default reference proposal is not an LLM. The optional DeepSeek path requires `DEEPSEEK_API_KEY` in a local, ignored `.env` (see `.env.example`); restart the server after configuring it. Requires Node 20.12+. Never put credentials in chat or committed files. The model proposes one file as JSON; local code computes canonical patch hashes, then native OWP execution and immutable tests verify the work. New bundles bind an app-operator-signed API attribution record to customer acceptance; this is not a signature by the model provider or independent verification. See [step 3 contract](docs/implementation-step-3.md), [official API documentation](https://api-docs.deepseek.com/), [native runtime setup](bridge/delivery_flow_README.md) and [runtime rebuild recipe](docs/runtime-reproduction.md). Historical default image references are local-only; the rebuild creates new immutable references, not a published deployment.
 
 A first actual DeepSeek proposal → native OWP validation → software-test-customer acceptance → finalized Devnet release was observed on 2026-10-05. See the [live-model execution record](docs/devnet-live-model-2026-10-05.md). This is not independent adoption or browser-wallet approval.
 
@@ -34,6 +36,8 @@ OWP_ALLOW_DEVNET_TEST=1 npm run test:devnet
 
 ## Run the local checks
 
+The [October 6 clean-checkout verification](docs/runtime-verification-2026-10-06.md) rebuilt the runtime from public pinned inputs, then passed **90 Python tests and 18 application tests**. It is a local stage-by-stage reproduction, not an independent-machine audit or a new Devnet transaction.
+
 Install the pinned tooling described in [toolchain setup](docs/toolchain-step-1.md), then run from this repository:
 
 ```sh
@@ -41,6 +45,9 @@ npm ci --ignore-scripts
 npm run test:local
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
+# Fresh ARM64 runtime build; source its actual immutable image references:
+PYTHON="$PWD/.venv/bin/python" bash scripts/build-runtime.sh
+source .tools/runtime-build/runtime.env
 .venv/bin/python -m pytest -q
 .venv/bin/python -m pip check
 ```
@@ -63,9 +70,16 @@ Program `2sWkMoDppGvjHemtT2kxbbrGoMRLT4p6jocsBG1H8nKk` is deployed on **Devnet o
 
 `Cargo.lock` and `package-lock.json` pin resolved dependencies. Python pins OWP and pytest but does not yet lock all transitive packages. The 2026-10-05 npm audit reported **9 alerts (3 high, 6 moderate)** in the local test SDK dependency tree. Native npm install scripts are disabled; the SDK uses a JavaScript fallback for bigint bindings. Audit findings remain unresolved, not waived as safe. Automated major-version downgrades/upgrades are not applied to this prototype.
 
+## Licensing
+
+Settlement does not yet include its own `LICENSE` file; project-owner confirmation is pending. The pinned OpenWorkProof Core source includes Apache-2.0. Dependencies retain their respective licenses; public source availability and licensing status are separate from contest submission.
+
 ## Research documents
 
-- [English product demo on YouTube](https://youtu.be/iY_NE8bBbyI) — 2:48 edited actual Phantom/Devnet recording, English neural narration and captions; unlisted and saved in the contest draft, not finally submitted. [Local MP4](outputs/contest-demo-en/openworkproof-settlement-demo-en.mp4).
+- [English product demo on YouTube](https://youtu.be/iY_NE8bBbyI) — 2:48 edited actual Phantom/Devnet recording, English neural narration and captions; unlisted and included in the formal submission. [Local MP4](outputs/contest-demo-en/openworkproof-settlement-demo-en.mp4).
+- [English project pitch on YouTube](https://youtu.be/srXH7TC70_w) — approximately 1:58, included in the formal submission.
+- [Confirmed submission and material links](docs/contest-submission-2026-10-06.md)
+- [English judging interview preparation](docs/judging-qa-en.md)
 - [Recording verification and trust boundaries](docs/contest-demo-recording-2026-10-05.md) · [Script and storyboard](docs/contest-demo-en.md) · [Recorded-case chain evidence](outputs/contest-demo-en/recorded-demo-evidence.json)
 - [Source publication checks and exclusions](docs/code-publication-2026-10-05.md)
 - [Contest rules and submission checklist](docs/contest-research-2026-10-05.md)
@@ -97,4 +111,4 @@ Upstream protocol: [dengyier/OpenWorkProof](https://github.com/dengyier/OpenWork
 - [Hackathon FAQ](https://colosseum.com/hackathon)
 - [Registration](https://colosseum.com/arena/hackathon/register?entry=worldsfair)
 
-Submission deadline: **2026-10-12 23:59 America/Los_Angeles**, equivalent to **2026-10-13 14:59 Asia/Shanghai**. Plan to finish before the final day and recheck the portal for changes.
+Submission deadline: **2026-10-12 23:59 America/Los_Angeles**, equivalent to **2026-10-13 14:59 Asia/Shanghai**. This entry was submitted on October 6; do not submit it again. Keep submitted review links accessible and check the portal for organizer requests.
